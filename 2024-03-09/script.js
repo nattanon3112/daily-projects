@@ -66,15 +66,15 @@ function playerOptionDisplay(playerMove){
 }
 
 document.querySelector(".auto-button").onclick = autoPlay;
-let autoPlayOn = false;
+let autoPlayOn = false;        
+let auto = setInterval(()=>{play(computerMove);},1000);
 function autoPlay(){
-    if(!autoPlayOn){    
-        const auto = setInterval(()=>{play(computerMove);},1000);
-        computerPlay();
-        auto();
-    }else{
+    if(autoPlayOn){
         clearInterval(auto);
-        autoPlayOn=true;
+        autoPlayOn=!autoPlayOn;  
+    }else{
+        auto;
+        autoPlayOn=!autoPlayOn;
     }
-    
+    console.log(autoPlayOn?"Running":"OFF");
 }
